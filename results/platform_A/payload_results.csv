@@ -1,0 +1,13 @@
+platform,mode,payload,plaintext_bytes,ciphertext_bytes,overhead_bytes,trials,median_encrypt_ms,median_decrypt_ms,sha256_match,record_size,records,overhead_per_record_bytes,overhead_pct,encrypt_iqr_ms,decrypt_iqr_ms,encrypt_MBps,decrypt_MBps,local_or_network
+A,PQC,payload_1KB.bin,1024,1054,30,200,0.0032,0.0022,True,16384,1,14 header + 16 tag + 0 nonce (implicit 12 B),2.93,0.0005,0.0002,323.3,463.8,local (in-process)
+A,PQC,payload_100KB.bin,102400,102610,210,100,0.0326,0.0307,True,16384,7,14 header + 16 tag + 0 nonce (implicit 12 B),0.205,0.0013,0.0012,3138.7,3336.9,local (in-process)
+A,PQC,payload_10MB.bin,10485760,10504960,19200,15,3.2545,3.2186,True,16384,640,14 header + 16 tag + 0 nonce (implicit 12 B),0.183,0.0276,0.0359,3221.9,3257.8,local (in-process)
+A,PQC,payload_1KB.bin,1024,1054,30,200,0.003,0.0021,True,1024,1,14 header + 16 tag + 0 nonce (implicit 12 B),2.93,0.0004,0.0001,336.6,481.9,local (in-process)
+A,PQC,payload_100KB.bin,102400,102430,30,100,0.0234,0.0196,True,102400,1,14 header + 16 tag + 0 nonce (implicit 12 B),0.029,0.0007,0.0003,4380.7,5217.8,local (in-process)
+A,PQC,payload_10MB.bin,10485760,10485790,30,15,2.1804,1.86,True,10485760,1,14 header + 16 tag + 0 nonce (implicit 12 B),0.0,0.0582,0.0283,4809.2,5637.4,local (in-process)
+A,classical-baseline,payload_1KB.bin,1024,1054,30,200,0.0032,0.0022,True,16384,1,14 header + 16 tag + 0 nonce (implicit 12 B),2.93,0.0005,0.0002,315.1,472.8,local (in-process)
+A,classical-baseline,payload_100KB.bin,102400,102610,210,100,0.0329,0.0307,True,16384,7,14 header + 16 tag + 0 nonce (implicit 12 B),0.205,0.0018,0.0016,3116.8,3339.1,local (in-process)
+A,classical-baseline,payload_10MB.bin,10485760,10504960,19200,15,3.2592,3.2605,True,16384,640,14 header + 16 tag + 0 nonce (implicit 12 B),0.183,0.1362,0.0767,3217.3,3216.0,local (in-process)
+A,classical-baseline,payload_1KB.bin,1024,1054,30,200,0.0035,0.0023,True,1024,1,14 header + 16 tag + 0 nonce (implicit 12 B),2.93,0.0013,0.0003,290.9,447.0,local (in-process)
+A,classical-baseline,payload_100KB.bin,102400,102430,30,100,0.0239,0.02,True,102400,1,14 header + 16 tag + 0 nonce (implicit 12 B),0.029,0.0039,0.0028,4281.5,5130.8,local (in-process)
+A,classical-baseline,payload_10MB.bin,10485760,10485790,30,15,2.2642,1.8984,True,10485760,1,14 header + 16 tag + 0 nonce (implicit 12 B),0.0,0.0579,0.0692,4631.2,5523.5,local (in-process)

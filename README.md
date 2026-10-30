@@ -89,7 +89,7 @@ python scripts/channel.py client --port 8765 --suite classical # rejected: Bob's
 
 | Platform | Machine / profile | Evidence file |
 |---|---|---|
-| A (required) | team laptop as-is (CPU, cores, RAM and OS recorded automatically) | `platform_A_info.json` |
+| A (required) | team laptop as-is (CPU, cores, RAM and OS recorded automatically) | `platform_A_info.json`, `results/platform_A/` |
 | B (optional) | 1 core, single-threaded libraries, 128 MB budget via `common/run_on_platform.py` | `platform_runs.jsonl`, `results/platform_B/` |
 | D (optional) | emulated links: LAN 1 ms/100 Mbit/s, 4G 50 ms/10 Mbit/s, constrained 100 ms/1 Mbit/s, narrowband 300 ms/100 kbit/s | [platform_D.md](platform_D.md), `results/platform_D/` |
 
@@ -160,7 +160,7 @@ Recorded results:
 
 ## 7. Results and Detailed Comparison (Platform A)
 
-All measurements are labelled **local (in-process)**, **local (TCP loopback)** or **emulated network**. Every test and benchmark was executed on the committed Platform A environment. Full summary tables are also available in [RESULTS.md](RESULTS.md) and extensive analysis in [report.md](report.md).
+All measurements are labelled **local (in-process)**, **local (TCP loopback)** or **emulated network**. Every test and benchmark was executed on the committed Platform A environment, with dedicated raw data saved in [`results/platform_A/`](results/platform_A/). Full summary tables are also available in [RESULTS.md](RESULTS.md) and extensive analysis in [report.md](report.md).
 
 ### 7.1 Handshake Latency and Success Rates (Platform A)
 100 handshakes were executed per suite and mode with zero failures.

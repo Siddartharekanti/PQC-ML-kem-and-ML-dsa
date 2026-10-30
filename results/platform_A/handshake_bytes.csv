@@ -1,0 +1,19 @@
+suite,message,message_name,direction,bytes,crypto_material_bytes,identity_and_algorithm_bytes,framing_bytes,fields
+PQC,CH,ClientHello,client->server,1332,1248,55,29,version=1; suite_id=2; algorithm_ids=44; client_identity=5; client_key_id=32; server_identity=3; client_nonce=32; kem_public_key=1184
+PQC,SH,ServerHello,server->client,1236,1152,55,29,version=1; suite_id=2; algorithm_ids=44; server_identity=3; server_key_id=32; client_identity=5; server_nonce=32; kem_ciphertext=1088
+PQC,SV,ServerVerify,server->client,3317,3309,0,8,signature=3309
+PQC,SF,ServerFinished,server->client,40,32,0,8,finished_mac=32
+PQC,CV,ClientVerify,client->server,3317,3309,0,8,signature=3309
+PQC,CF,ClientFinished,client->server,40,32,0,8,finished_mac=32
+CLASSICAL,CH,ClientHello,client->server,174,96,49,29,version=1; suite_id=2; algorithm_ids=38; client_identity=5; client_key_id=32; server_identity=3; client_nonce=32; kem_public_key=32
+CLASSICAL,SH,ServerHello,server->client,174,96,49,29,version=1; suite_id=2; algorithm_ids=38; server_identity=3; server_key_id=32; client_identity=5; server_nonce=32; kem_ciphertext=32
+CLASSICAL,SV,ServerVerify,server->client,72,64,0,8,signature=64
+CLASSICAL,SF,ServerFinished,server->client,40,32,0,8,finished_mac=32
+CLASSICAL,CV,ClientVerify,client->server,72,64,0,8,signature=64
+CLASSICAL,CF,ClientFinished,client->server,40,32,0,8,finished_mac=32
+HYBRID,CH,ClientHello,client->server,1371,1280,62,29,version=1; suite_id=2; algorithm_ids=51; client_identity=5; client_key_id=32; server_identity=3; client_nonce=32; kem_public_key=1216
+HYBRID,SH,ServerHello,server->client,1275,1184,62,29,version=1; suite_id=2; algorithm_ids=51; server_identity=3; server_key_id=32; client_identity=5; server_nonce=32; kem_ciphertext=1120
+HYBRID,SV,ServerVerify,server->client,3317,3309,0,8,signature=3309
+HYBRID,SF,ServerFinished,server->client,40,32,0,8,finished_mac=32
+HYBRID,CV,ClientVerify,client->server,3317,3309,0,8,signature=3309
+HYBRID,CF,ClientFinished,client->server,40,32,0,8,finished_mac=32

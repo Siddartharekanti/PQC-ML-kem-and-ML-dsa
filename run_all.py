@@ -49,6 +49,15 @@ def main():
     step("3. Security tests T1-T9", [PY, "run_security_tests.py"] + (["--quick"] if a.quick else []))
     step("4. Handshake benchmark (Platform A)", [PY, "scripts/bench_handshake.py", "--trials", trials])
     step("5. Payload benchmark (Platform A)", [PY, "scripts/bench_payloads.py"] + (["--scale", "0.2"] if a.quick else []))
+    # Mirror raw Platform A results to results/platform_A/
+    import shutil
+    pa_dir = os.path.join(ROOT, "results", "platform_A")
+    os.makedirs(pa_dir, exist_ok=True)
+    for f in os.listdir(os.path.join(ROOT, "results")):
+        if f.endswith(".csv"):
+            shutil.copy2(os.path.join(ROOT, "results", f), os.path.join(pa_dir, f))
+    if os.path.exists(os.path.join(ROOT, "platform_A_info.json")):
+        shutil.copy2(os.path.join(ROOT, "platform_A_info.json"), os.path.join(pa_dir, "platform_A_info.json"))
     if not (a.quick or a.skip_b):
         step("6a. Handshake benchmark on Platform B (1 core, 128 MB, single-thread)",
              [PY, "common/run_on_platform.py", "--platform", "B", "--", PY, "scripts/bench_handshake.py",

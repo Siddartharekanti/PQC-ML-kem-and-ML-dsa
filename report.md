@@ -327,4 +327,4 @@ python -m pip install -r requirements.txt             # cryptography 50.0.2, pqc
 python run_all.py                                     # every table + figure (≈2-5 min); --quick ≈1 min
 ```
 
-Each step can also be run on its own; see README §3. Raw data is in `results/`. Figures are produced by `scripts/make_figures.py` and tables by `scripts/make_report.py`. The machine is recorded in `platform_A_info.json`, and Platform B evidence in `platform_runs.jsonl`. Library versions are listed in `requirements.txt` and recorded in `platform_A_info.json`.
+Each step can also be run on its own; see README §3. Raw data is in `results/` and `results/platform_A/`. Figures are produced by `scripts/make_figures.py` and tables by `scripts/make_report.py`. The machine is recorded in `platform_A_info.json`, and Platform B evidence in `platform_runs.jsonl`. Library versions are listed in `requirements.txt` and recorded in `platform_A_info.json`.

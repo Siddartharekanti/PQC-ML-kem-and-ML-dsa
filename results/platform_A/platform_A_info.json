@@ -1,0 +1,20 @@
+{
+  "platform_label": "A",
+  "recorded_at": "2026-10-30 11:43:35",
+  "os": "Darwin 27.0.0",
+  "os_version": "Darwin Kernel Version 27.0.0: Tue Aug 11 21:05:27 PDT 2026; root:xnu-13432.1.9~1/RELEASE_ARM64_T8103",
+  "machine": "arm64",
+  "cpu_model": "arm",
+  "physical_cores": 8,
+  "logical_cores": 8,
+  "cpu_max_mhz": 3204,
+  "ram_total_gb": 8.0,
+  "python": "3.12.13",
+  "python_impl": "CPython",
+  "on_battery": true,
+  "versions": {
+    "cryptography": "50.0.2",
+    "pqcrypto": "1.0.0",
+    "psutil": "7.2.2"
+  }
+}
