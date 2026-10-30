@@ -29,3 +29,4 @@ This directory contains the complete set of raw measurement data and test output
 - **Handshake Wire Size:** PQC: **9,282 B** vs Classical: **572 B** (16.2x ratio, +8,710 B; 71.3% from ML-DSA-65 signatures)
 - **10 MB Bulk Record Layer:** PQC: **3,222 MB/s** vs Classical: **3,217 MB/s** (Identical AES-256-GCM performance; 0% post-quantum data transfer penalty)
 - **Security Tests T1–T9:** 100% Pass rate across all 185 fault-injection scenarios.
+
