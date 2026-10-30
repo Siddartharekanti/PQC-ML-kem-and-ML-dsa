@@ -1,0 +1,8 @@
+category,suite_or_payload,trials_or_records,median_or_encrypt_ms,q1_or_decrypt_ms,q3_ms,iqr_ms,serialized_bytes,overhead_bytes,detail
+handshake_local_socketpair,PQC,10,1.003688,0.911812,1.096343,0.184531,9282,,ClientHello=1332 B; ClientVerify=3317 B; ClientFinished=40 B; ServerHello=1236 B; ServerVerify=3317 B; ServerFinished=40 B
+handshake_local_socketpair,CLASSICAL,10,0.234875,0.227948,0.255209,0.027261,572,,ClientHello=174 B; ClientVerify=72 B; ClientFinished=40 B; ServerHello=174 B; ServerVerify=72 B; ServerFinished=40 B
+baseline_comparison,PQC / CLASSICAL,10 each,4.273x latency,,,,8710,,PQC median 1.003688 ms vs classical 0.234875 ms; PQC 9282 B vs classical 572 B (16.227x bytes)
+record_local_in_process,payload_1KB.bin,1,0.009542,0.006333,,,1054,30,payload=1024 B; SHA-256=b581f87af96e450e8d49e13990d2753f6b4317f2228481c2d0f086c1463f084d
+record_local_in_process,payload_100KB.bin,7,0.031167,0.024375,,,102610,210,payload=102400 B; SHA-256=56d1e88b9066a2effcb2c6a97f6af99fc28c82b022902b996711fb15dcd59f04
+record_local_in_process,payload_10MB.bin,640,2.051375,3.245750,,,10504960,19200,payload=10485760 B; SHA-256=c6bf29308ba5a7412a3a92a97d9618073da01eb68d57b6a9eb4b01819358c716
+record_overhead,AES-256-GCM,per record,,,,,30,30,14 B authenticated header + 16 B tag; 12 B nonce derived from IV XOR sequence and not serialized

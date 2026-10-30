@@ -1,0 +1,10 @@
+id,test,status,observed_behavior
+T1,Honest run,,
+T2,Handshake tampering,,
+T3,Signature tampering,,
+T4,Ciphertext tampering,,
+T5,Tag / AAD tampering,,
+T6,Untrusted identity,,
+T7,Identity swap,,
+T8,Replay,,
+T9,Algorithm downgrade,,

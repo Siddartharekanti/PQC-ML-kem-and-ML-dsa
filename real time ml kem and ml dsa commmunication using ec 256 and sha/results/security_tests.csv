@@ -1,0 +1,10 @@
+id,test,status,observed_behavior
+T1,Honest run,PASS,"handshake completed in 1.464 ms; traffic keys identical; payload_1KB.bin SHA-256=b581f87af96e450e8d49e13990d2753f6b4317f2228481c2d0f086c1463f084d, 1 record(s); payload_100KB.bin SHA-256=56d1e88b9066a2effcb2c6a97f6af99fc28c82b022902b996711fb15dcd59f04, 7 record(s); payload_10MB.bin SHA-256=c6bf29308ba5a7412a3a92a97d9618073da01eb68d57b6a9eb4b01819358c716, 640 record(s)"
+T2,Handshake tampering,PASS,server nonce bit flipped; client aborted with SignatureError: ML-DSA-65 public key or signature was rejected; no traffic session returned by either side
+T3,Signature tampering,PASS,ML-DSA signature bit flipped; rejected with SignatureError: ML-DSA-65 public key or signature was rejected
+T4,Ciphertext tampering,PASS,ciphertext bit flipped; AES-256-GCM InvalidTag on record seq 0; plaintext released=False
+T5,Tag / AAD tampering,PASS,tag: AES-256-GCM InvalidTag on record seq 0; AAD header: AES-256-GCM InvalidTag on record seq 1
+T6,Untrusted identity,PASS,"attacker ML-DSA signature self-valid, but attacker key rejected against Alice pin: key presented for 'alice' (key id 261ee15970c61465...) does NOT match the pinned trust anchor (key id b751801ca75524f9...)"
+T7,Identity swap,PASS,"signed Bob flight relabelled as peer 'eve'; rejected with IdentityMismatch: ServerHello is from 'eve', this session is bound to 'bob'"
+T8,Replay,PASS,application record replay rejected before decryption: record seq 0 already received (expected seq 1) -> replay rejected BEFORE decryption
+T9,Algorithm downgrade,PASS,"ClientHello algorithm identifier bit changed; rejected with DowngradeError: ClientHello: algorithm identifiers b'XL-KEM-768,ML-DSA-65,HKDF-SHA256,AES-256-GCM' do not match suite 0x0101 (ML-KEM-768,ML-DSA-65,HKDF-SHA256,AES-256-GCM)"
