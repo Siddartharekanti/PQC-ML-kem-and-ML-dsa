@@ -132,7 +132,7 @@ All measurements use `time.perf_counter_ns()` with warm-up trials and the garbag
 | Python | 3.12.13 (CPython) |
 | Libraries | cryptography 50.0.2, pqcrypto 1.0.0, psutil 7.2.2 |
 | On battery | True |
-| Recorded | 2026-10-30 11:34:55 |
+| Recorded | 2026-10-30 11:43:35 |
 <!-- /AUTO:platform -->
 
 ### 5.1 Handshake latency, bytes, success counts
@@ -140,12 +140,12 @@ All measurements use `time.perf_counter_ns()` with warm-up trials and the garbag
 <!-- AUTO:handshake -->
 | Suite | Measurement | OK / trials | Median ms | IQR ms | p95 ms | C->S B | S->C B | Total B |
 |---|---|---|---|---|---|---|---|---|
-| PQC (ML-KEM-768 + ML-DSA-65) | local (in-process) | 100/100 | 1.503 | 0.873 | 3.123 | 4689 | 4593 | **9282** |
-| PQC (ML-KEM-768 + ML-DSA-65) | local (TCP loopback 127.0.0.1) | 100/100 | 1.472 | 0.793 | 2.706 | 4689 | 4593 | **9282** |
-| Baseline (X25519 + Ed25519) | local (in-process) | 100/100 | 0.413 | 0.012 | 0.449 | 286 | 286 | **572** |
-| Baseline (X25519 + Ed25519) | local (TCP loopback 127.0.0.1) | 100/100 | 0.473 | 0.026 | 0.527 | 286 | 286 | **572** |
-| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | local (in-process) | 100/100 | 1.698 | 0.889 | 2.894 | 4728 | 4632 | **9360** |
-| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | local (TCP loopback 127.0.0.1) | 100/100 | 1.669 | 0.612 | 3.119 | 4728 | 4632 | **9360** |
+| PQC (ML-KEM-768 + ML-DSA-65) | local (in-process) | 100/100 | 1.492 | 0.768 | 2.836 | 4689 | 4593 | **9282** |
+| PQC (ML-KEM-768 + ML-DSA-65) | local (TCP loopback 127.0.0.1) | 100/100 | 1.538 | 0.815 | 2.706 | 4689 | 4593 | **9282** |
+| Baseline (X25519 + Ed25519) | local (in-process) | 100/100 | 0.422 | 0.029 | 0.510 | 286 | 286 | **572** |
+| Baseline (X25519 + Ed25519) | local (TCP loopback 127.0.0.1) | 100/100 | 0.485 | 0.018 | 0.516 | 286 | 286 | **572** |
+| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | local (in-process) | 100/100 | 1.704 | 0.735 | 2.781 | 4728 | 4632 | **9360** |
+| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | local (TCP loopback 127.0.0.1) | 100/100 | 1.635 | 0.674 | 2.721 | 4728 | 4632 | **9360** |
 <!-- /AUTO:handshake -->
 
 Split of the in-process compute time between the two endpoints:
@@ -153,9 +153,9 @@ Split of the in-process compute time between the two endpoints:
 <!-- AUTO:compute -->
 | Suite | Alice compute median ms | Bob compute median ms |
 |---|---|---|
-| PQC (ML-KEM-768 + ML-DSA-65) | 0.654 | 0.662 |
-| Baseline (X25519 + Ed25519) | 0.206 | 0.206 |
-| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | 0.741 | 0.724 |
+| PQC (ML-KEM-768 + ML-DSA-65) | 0.739 | 0.592 |
+| Baseline (X25519 + Ed25519) | 0.211 | 0.211 |
+| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | 0.818 | 0.722 |
 <!-- /AUTO:compute -->
 
 ![Handshake latency](results/figures/fig1_handshake_latency.png)
@@ -187,18 +187,18 @@ Encryption and decryption run inside an established session. Each decrypted payl
 <!-- AUTO:payloads -->
 | Session | Payload | Plaintext B | Record size | Records | Wire B | Overhead B | Trials | Enc median ms | Dec median ms | Enc MB/s | Dec MB/s | SHA-256 match |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| PQC (ML-KEM-768 + ML-DSA-65) | payload_1KB.bin | 1,024 | 16384 | 1 | 1,054 | 30 (2.93 %) | 200 | 0.0035 | 0.0024 | 289.1 | 423.7 | yes |
-| PQC (ML-KEM-768 + ML-DSA-65) | payload_100KB.bin | 102,400 | 16384 | 7 | 102,610 | 210 (0.205 %) | 100 | 0.0337 | 0.0319 | 3041.6 | 3214.6 | yes |
-| PQC (ML-KEM-768 + ML-DSA-65) | payload_10MB.bin | 10,485,760 | 16384 | 640 | 10,504,960 | 19200 (0.183 %) | 15 | 3.2632 | 3.2838 | 3213.4 | 3193.2 | yes |
-| PQC (ML-KEM-768 + ML-DSA-65) | payload_1KB.bin | 1,024 | 1024 | 1 | 1,054 | 30 (2.93 %) | 200 | 0.0033 | 0.0022 | 307.2 | 455.1 | yes |
-| PQC (ML-KEM-768 + ML-DSA-65) | payload_100KB.bin | 102,400 | 102400 | 1 | 102,430 | 30 (0.029 %) | 100 | 0.0238 | 0.0204 | 4311.6 | 5015.6 | yes |
-| PQC (ML-KEM-768 + ML-DSA-65) | payload_10MB.bin | 10,485,760 | 10485760 | 1 | 10,485,790 | 30 (0.0 %) | 15 | 2.2483 | 1.8890 | 4664.0 | 5551.0 | yes |
-| Baseline (X25519 + Ed25519) | payload_1KB.bin | 1,024 | 16384 | 1 | 1,054 | 30 (2.93 %) | 200 | 0.0035 | 0.0024 | 289.1 | 423.7 | yes |
-| Baseline (X25519 + Ed25519) | payload_100KB.bin | 102,400 | 16384 | 7 | 102,610 | 210 (0.205 %) | 100 | 0.0333 | 0.0315 | 3077.8 | 3252.9 | yes |
-| Baseline (X25519 + Ed25519) | payload_10MB.bin | 10,485,760 | 16384 | 640 | 10,504,960 | 19200 (0.183 %) | 15 | 3.2828 | 3.3153 | 3194.1 | 3162.8 | yes |
-| Baseline (X25519 + Ed25519) | payload_1KB.bin | 1,024 | 1024 | 1 | 1,054 | 30 (2.93 %) | 200 | 0.0035 | 0.0024 | 289.1 | 423.8 | yes |
-| Baseline (X25519 + Ed25519) | payload_100KB.bin | 102,400 | 102400 | 1 | 102,430 | 30 (0.029 %) | 100 | 0.0241 | 0.0206 | 4244.6 | 4959.9 | yes |
-| Baseline (X25519 + Ed25519) | payload_10MB.bin | 10,485,760 | 10485760 | 1 | 10,485,790 | 30 (0.0 %) | 15 | 2.2925 | 1.9090 | 4573.9 | 5492.9 | yes |
+| PQC (ML-KEM-768 + ML-DSA-65) | payload_1KB.bin | 1,024 | 16384 | 1 | 1,054 | 30 (2.93 %) | 200 | 0.0032 | 0.0022 | 323.3 | 463.8 | yes |
+| PQC (ML-KEM-768 + ML-DSA-65) | payload_100KB.bin | 102,400 | 16384 | 7 | 102,610 | 210 (0.205 %) | 100 | 0.0326 | 0.0307 | 3138.7 | 3336.9 | yes |
+| PQC (ML-KEM-768 + ML-DSA-65) | payload_10MB.bin | 10,485,760 | 16384 | 640 | 10,504,960 | 19200 (0.183 %) | 15 | 3.2545 | 3.2186 | 3221.9 | 3257.8 | yes |
+| PQC (ML-KEM-768 + ML-DSA-65) | payload_1KB.bin | 1,024 | 1024 | 1 | 1,054 | 30 (2.93 %) | 200 | 0.0030 | 0.0021 | 336.6 | 481.9 | yes |
+| PQC (ML-KEM-768 + ML-DSA-65) | payload_100KB.bin | 102,400 | 102400 | 1 | 102,430 | 30 (0.029 %) | 100 | 0.0234 | 0.0196 | 4380.7 | 5217.8 | yes |
+| PQC (ML-KEM-768 + ML-DSA-65) | payload_10MB.bin | 10,485,760 | 10485760 | 1 | 10,485,790 | 30 (0.0 %) | 15 | 2.1804 | 1.8600 | 4809.2 | 5637.4 | yes |
+| Baseline (X25519 + Ed25519) | payload_1KB.bin | 1,024 | 16384 | 1 | 1,054 | 30 (2.93 %) | 200 | 0.0032 | 0.0022 | 315.1 | 472.8 | yes |
+| Baseline (X25519 + Ed25519) | payload_100KB.bin | 102,400 | 16384 | 7 | 102,610 | 210 (0.205 %) | 100 | 0.0329 | 0.0307 | 3116.8 | 3339.1 | yes |
+| Baseline (X25519 + Ed25519) | payload_10MB.bin | 10,485,760 | 16384 | 640 | 10,504,960 | 19200 (0.183 %) | 15 | 3.2592 | 3.2605 | 3217.3 | 3216.0 | yes |
+| Baseline (X25519 + Ed25519) | payload_1KB.bin | 1,024 | 1024 | 1 | 1,054 | 30 (2.93 %) | 200 | 0.0035 | 0.0023 | 290.9 | 447.0 | yes |
+| Baseline (X25519 + Ed25519) | payload_100KB.bin | 102,400 | 102400 | 1 | 102,430 | 30 (0.029 %) | 100 | 0.0239 | 0.0200 | 4281.5 | 5130.8 | yes |
+| Baseline (X25519 + Ed25519) | payload_10MB.bin | 10,485,760 | 10485760 | 1 | 10,485,790 | 30 (0.0 %) | 15 | 2.2642 | 1.8984 | 4631.2 | 5523.5 | yes |
 <!-- /AUTO:payloads -->
 
 ### 5.4 Where the time goes
@@ -206,24 +206,24 @@ Encryption and decryption run inside an established session. Each decrypted payl
 <!-- AUTO:prims -->
 | Suite | Operation | Median ms | IQR ms | p95 ms | n |
 |---|---|---|---|---|---|
-| PQC | ML-KEM-768 KeyGen (ephemeral, Alice) | 0.0757 | 0.0009 | 0.0830 | 200 |
-| PQC | ML-KEM-768 Encaps (Bob) | 0.0258 | 0.0001 | 0.0260 | 200 |
-| PQC | ML-KEM-768 Decaps (Alice) | 0.0213 | 0.0001 | 0.0214 | 200 |
-| PQC | ML-DSA-65 Sign (each side once) | 0.4825 | 0.5353 | 1.5538 | 200 |
-| PQC | ML-DSA-65 Verify (each side once) | 0.1143 | 0.0004 | 0.1264 | 200 |
-| PQC | HKDF-SHA256 extract + 7 expands | 0.0137 | 0.0001 | 0.0138 | 200 |
-| CLASSICAL | X25519 KeyGen (ephemeral, Alice) | 0.0289 | 0.0001 | 0.0302 | 200 |
-| CLASSICAL | X25519 Encaps (Bob) | 0.0582 | 0.0021 | 0.0625 | 200 |
-| CLASSICAL | X25519 Decaps (Alice) | 0.0292 | 0.0001 | 0.0295 | 200 |
-| CLASSICAL | Ed25519 Sign (each side once) | 0.0276 | 0.0010 | 0.0300 | 200 |
-| CLASSICAL | Ed25519 Verify (each side once) | 0.0831 | 0.0028 | 0.0932 | 200 |
-| CLASSICAL | HKDF-SHA256 extract + 7 expands | 0.0138 | 0.0009 | 0.0148 | 200 |
-| HYBRID | X25519+ML-KEM-768 KeyGen (ephemeral, Alice) | 0.1052 | 0.0034 | 0.1159 | 200 |
-| HYBRID | X25519+ML-KEM-768 Encaps (Bob) | 0.0847 | 0.0003 | 0.0880 | 200 |
-| HYBRID | X25519+ML-KEM-768 Decaps (Alice) | 0.0506 | 0.0001 | 0.0530 | 200 |
-| HYBRID | ML-DSA-65 Sign (each side once) | 0.3955 | 0.3886 | 1.3919 | 200 |
-| HYBRID | ML-DSA-65 Verify (each side once) | 0.1142 | 0.0008 | 0.1182 | 200 |
-| HYBRID | HKDF-SHA256 extract + 7 expands | 0.0137 | 0.0001 | 0.0138 | 200 |
+| PQC | ML-KEM-768 KeyGen (ephemeral, Alice) | 0.0760 | 0.0021 | 0.0821 | 200 |
+| PQC | ML-KEM-768 Encaps (Bob) | 0.0259 | 0.0001 | 0.0268 | 200 |
+| PQC | ML-KEM-768 Decaps (Alice) | 0.0212 | 0.0000 | 0.0213 | 200 |
+| PQC | ML-DSA-65 Sign (each side once) | 0.4733 | 0.3729 | 1.2989 | 200 |
+| PQC | ML-DSA-65 Verify (each side once) | 0.1143 | 0.0003 | 0.1213 | 200 |
+| PQC | HKDF-SHA256 extract + 7 expands | 0.0136 | 0.0002 | 0.0139 | 200 |
+| CLASSICAL | X25519 KeyGen (ephemeral, Alice) | 0.0289 | 0.0001 | 0.0293 | 200 |
+| CLASSICAL | X25519 Encaps (Bob) | 0.0580 | 0.0002 | 0.0623 | 200 |
+| CLASSICAL | X25519 Decaps (Alice) | 0.0292 | 0.0001 | 0.0293 | 200 |
+| CLASSICAL | Ed25519 Sign (each side once) | 0.0276 | 0.0001 | 0.0277 | 200 |
+| CLASSICAL | Ed25519 Verify (each side once) | 0.0825 | 0.0003 | 0.0885 | 200 |
+| CLASSICAL | HKDF-SHA256 extract + 7 expands | 0.0139 | 0.0010 | 0.0146 | 200 |
+| HYBRID | X25519+ML-KEM-768 KeyGen (ephemeral, Alice) | 0.1078 | 0.0043 | 0.1130 | 200 |
+| HYBRID | X25519+ML-KEM-768 Encaps (Bob) | 0.0846 | 0.0003 | 0.0897 | 200 |
+| HYBRID | X25519+ML-KEM-768 Decaps (Alice) | 0.0506 | 0.0001 | 0.0533 | 200 |
+| HYBRID | ML-DSA-65 Sign (each side once) | 0.4826 | 0.4472 | 1.3765 | 200 |
+| HYBRID | ML-DSA-65 Verify (each side once) | 0.1144 | 0.0002 | 0.1175 | 200 |
+| HYBRID | HKDF-SHA256 extract + 7 expands | 0.0135 | 0.0001 | 0.0145 | 200 |
 <!-- /AUTO:prims -->
 
 ![Primitive costs](results/figures/fig3_primitive_costs.png)
@@ -232,9 +232,9 @@ Encryption and decryption run inside an established session. Each decrypted payl
 
 <!-- AUTO:ratios -->
 - **Bytes:** PQC handshake = 9,282 B vs baseline 572 B -> **16.2x** (+8,710 B per handshake; deterministic, identical on every machine).
-- **Latency (in-process):** PQC median 1.503 ms vs baseline 0.413 ms -> **3.64x** (+1.090 ms).
-- **Latency (TCP loopback):** PQC median 1.472 ms vs baseline 0.473 ms -> **3.11x** (+0.999 ms).
-- **Record layer:** identical AES-256-GCM in both suites - 10 MB encrypt median 3.26 ms (PQC) vs 3.28 ms (classical-baseline); PQC changes only the handshake.
+- **Latency (in-process):** PQC median 1.492 ms vs baseline 0.422 ms -> **3.54x** (+1.070 ms).
+- **Latency (TCP loopback):** PQC median 1.538 ms vs baseline 0.485 ms -> **3.17x** (+1.053 ms).
+- **Record layer:** identical AES-256-GCM in both suites - 10 MB encrypt median 3.25 ms (PQC) vs 3.26 ms (classical-baseline); PQC changes only the handshake.
 <!-- /AUTO:ratios -->
 
 **Explanation:**
@@ -264,14 +264,14 @@ Encryption and decryption run inside an established session. Each decrypted payl
 <!-- AUTO:platform_b -->
 | Suite | Measurement | OK/trials (B) | A median ms | B median ms | B/A |
 |---|---|---|---|---|---|
-| PQC (ML-KEM-768 + ML-DSA-65) | inproc | 100/100 | 1.503 | 1.487 | 0.99 |
-| PQC (ML-KEM-768 + ML-DSA-65) | loopback | 100/100 | 1.472 | 1.550 | 1.05 |
-| Baseline (X25519 + Ed25519) | inproc | 100/100 | 0.413 | 0.415 | 1.00 |
-| Baseline (X25519 + Ed25519) | loopback | 100/100 | 0.473 | 0.475 | 1.00 |
-| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | inproc | 100/100 | 1.698 | 1.603 | 0.94 |
-| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | loopback | 100/100 | 1.669 | 1.741 | 1.04 |
+| PQC (ML-KEM-768 + ML-DSA-65) | inproc | 100/100 | 1.492 | 1.577 | 1.06 |
+| PQC (ML-KEM-768 + ML-DSA-65) | loopback | 100/100 | 1.538 | 1.645 | 1.07 |
+| Baseline (X25519 + Ed25519) | inproc | 100/100 | 0.422 | 0.414 | 0.98 |
+| Baseline (X25519 + Ed25519) | loopback | 100/100 | 0.485 | 0.492 | 1.01 |
+| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | inproc | 100/100 | 1.704 | 1.468 | 0.86 |
+| Hybrid ext. (X25519+ML-KEM-768 + ML-DSA-65) | loopback | 100/100 | 1.635 | 1.743 | 1.07 |
 
-Platform B evidence (`platform_runs.jsonl`): `bench_handshake.py` status=ok, peak RSS 83.7 MB / 128 MB, not supported; `bench_payloads.py` status=ok, peak RSS 95.9 MB / 128 MB, not supported
+Platform B evidence (`platform_runs.jsonl`): `one` status=ok, peak RSS 84.0 MB / 128 MB, not supported; `one` status=ok, peak RSS 97.8 MB / 128 MB, not supported
 <!-- /AUTO:platform_b -->
 
 ### 7.1 Platform D (optional): emulated network links
@@ -281,16 +281,16 @@ This table uses the same workload as Platform A, sent over a user-space link emu
 <!-- AUTO:platform_d -->
 | Profile | RTT ms | Mbit/s | Suite | OK/trials | Handshake median ms | IQR ms | Model ms | Connect->confirmed ms | Bytes |
 |---|---|---|---|---|---|---|---|---|---|
-| lan | 1 | 100 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 4.21 | 0.70 | 2.93 | 6.38 | 9282 |
-| lan | 1 | 100 | Baseline (X25519 + Ed25519) | 15/15 | 2.18 | 0.17 | 1.45 | 4.00 | 572 |
-| mobile | 50 | 10 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 68.54 | 3.93 | 56.20 | 131.79 | 9282 |
-| mobile | 50 | 10 | Baseline (X25519 + Ed25519) | 15/15 | 59.39 | 3.82 | 50.78 | 119.21 | 572 |
-| constrained | 100 | 1 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 163.51 | 6.94 | 148.86 | 302.11 | 9282 |
-| constrained | 100 | 1 | Baseline (X25519 + Ed25519) | 15/15 | 112.37 | 2.91 | 104.10 | 222.46 | 572 |
-| narrowband | 300 | 0.1 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 790.61 | 5.58 | 775.46 | 1376.00 | 9282 |
-| narrowband | 300 | 0.1 | Baseline (X25519 + Ed25519) | 15/15 | 346.83 | 2.69 | 337.22 | 671.07 | 572 |
+| lan | 1 | 100 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 3.95 | 0.83 | 3.00 | 6.25 | 9282 |
+| lan | 1 | 100 | Baseline (X25519 + Ed25519) | 15/15 | 2.23 | 0.03 | 1.47 | 4.14 | 572 |
+| mobile | 50 | 10 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 71.97 | 4.52 | 56.27 | 134.95 | 9282 |
+| mobile | 50 | 10 | Baseline (X25519 + Ed25519) | 15/15 | 61.28 | 3.39 | 50.80 | 122.91 | 572 |
+| constrained | 100 | 1 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 161.21 | 2.82 | 148.93 | 299.86 | 9282 |
+| constrained | 100 | 1 | Baseline (X25519 + Ed25519) | 15/15 | 114.95 | 2.04 | 104.11 | 226.63 | 572 |
+| narrowband | 300 | 0.1 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 790.42 | 5.64 | 775.53 | 1378.15 | 9282 |
+| narrowband | 300 | 0.1 | Baseline (X25519 + Ed25519) | 15/15 | 349.24 | 3.82 | 337.23 | 673.51 | 572 |
 
-lan: PQC/baseline = 1.93x (+2.0 ms); mobile: PQC/baseline = 1.15x (+9.2 ms); constrained: PQC/baseline = 1.46x (+51.1 ms); narrowband: PQC/baseline = 2.28x (+443.8 ms).
+lan: PQC/baseline = 1.77x (+1.7 ms); mobile: PQC/baseline = 1.17x (+10.7 ms); constrained: PQC/baseline = 1.40x (+46.3 ms); narrowband: PQC/baseline = 2.26x (+441.2 ms).
 <!-- /AUTO:platform_d -->
 
 ![Platform D](results/figures/fig4_platform_D_links.png)

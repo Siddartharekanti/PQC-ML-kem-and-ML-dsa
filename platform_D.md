@@ -45,16 +45,16 @@ python scripts/make_figures.py && python scripts/make_report.py
 <!-- AUTO:platform_d -->
 | Profile | RTT ms | Mbit/s | Suite | OK/trials | Handshake median ms | IQR ms | Model ms | Connect->confirmed ms | Bytes |
 |---|---|---|---|---|---|---|---|---|---|
-| lan | 1 | 100 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 4.21 | 0.70 | 2.93 | 6.38 | 9282 |
-| lan | 1 | 100 | Baseline (X25519 + Ed25519) | 15/15 | 2.18 | 0.17 | 1.45 | 4.00 | 572 |
-| mobile | 50 | 10 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 68.54 | 3.93 | 56.20 | 131.79 | 9282 |
-| mobile | 50 | 10 | Baseline (X25519 + Ed25519) | 15/15 | 59.39 | 3.82 | 50.78 | 119.21 | 572 |
-| constrained | 100 | 1 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 163.51 | 6.94 | 148.86 | 302.11 | 9282 |
-| constrained | 100 | 1 | Baseline (X25519 + Ed25519) | 15/15 | 112.37 | 2.91 | 104.10 | 222.46 | 572 |
-| narrowband | 300 | 0.1 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 790.61 | 5.58 | 775.46 | 1376.00 | 9282 |
-| narrowband | 300 | 0.1 | Baseline (X25519 + Ed25519) | 15/15 | 346.83 | 2.69 | 337.22 | 671.07 | 572 |
+| lan | 1 | 100 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 3.95 | 0.83 | 3.00 | 6.25 | 9282 |
+| lan | 1 | 100 | Baseline (X25519 + Ed25519) | 15/15 | 2.23 | 0.03 | 1.47 | 4.14 | 572 |
+| mobile | 50 | 10 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 71.97 | 4.52 | 56.27 | 134.95 | 9282 |
+| mobile | 50 | 10 | Baseline (X25519 + Ed25519) | 15/15 | 61.28 | 3.39 | 50.80 | 122.91 | 572 |
+| constrained | 100 | 1 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 161.21 | 2.82 | 148.93 | 299.86 | 9282 |
+| constrained | 100 | 1 | Baseline (X25519 + Ed25519) | 15/15 | 114.95 | 2.04 | 104.11 | 226.63 | 572 |
+| narrowband | 300 | 0.1 | PQC (ML-KEM-768 + ML-DSA-65) | 15/15 | 790.42 | 5.64 | 775.53 | 1378.15 | 9282 |
+| narrowband | 300 | 0.1 | Baseline (X25519 + Ed25519) | 15/15 | 349.24 | 3.82 | 337.23 | 673.51 | 572 |
 
-lan: PQC/baseline = 1.93x (+2.0 ms); mobile: PQC/baseline = 1.15x (+9.2 ms); constrained: PQC/baseline = 1.46x (+51.1 ms); narrowband: PQC/baseline = 2.28x (+443.8 ms).
+lan: PQC/baseline = 1.77x (+1.7 ms); mobile: PQC/baseline = 1.17x (+10.7 ms); constrained: PQC/baseline = 1.40x (+46.3 ms); narrowband: PQC/baseline = 2.26x (+441.2 ms).
 <!-- /AUTO:platform_d -->
 
 ![Platform D](results/figures/fig4_platform_D_links.png)

@@ -31,9 +31,9 @@ All results are in [RESULTS.md](RESULTS.md) and the analysis is in [report.md](r
 
 <!-- AUTO:ratios -->
 - **Bytes:** PQC handshake = 9,282 B vs baseline 572 B -> **16.2x** (+8,710 B per handshake; deterministic, identical on every machine).
-- **Latency (in-process):** PQC median 1.503 ms vs baseline 0.413 ms -> **3.64x** (+1.090 ms).
-- **Latency (TCP loopback):** PQC median 1.472 ms vs baseline 0.473 ms -> **3.11x** (+0.999 ms).
-- **Record layer:** identical AES-256-GCM in both suites - 10 MB encrypt median 3.26 ms (PQC) vs 3.28 ms (classical-baseline); PQC changes only the handshake.
+- **Latency (in-process):** PQC median 1.492 ms vs baseline 0.422 ms -> **3.54x** (+1.070 ms).
+- **Latency (TCP loopback):** PQC median 1.538 ms vs baseline 0.485 ms -> **3.17x** (+1.053 ms).
+- **Record layer:** identical AES-256-GCM in both suites - 10 MB encrypt median 3.25 ms (PQC) vs 3.26 ms (classical-baseline); PQC changes only the handshake.
 <!-- /AUTO:ratios -->
 
 ## 2. Setup — exact steps

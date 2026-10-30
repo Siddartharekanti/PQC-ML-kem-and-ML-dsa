@@ -1,7 +1,7 @@
 run_id,platform,mode,kem,signature,trials,median_handshake_ms,iqr_ms,p95_ms,client_to_server_bytes,server_to_client_bytes,total_handshake_bytes,success_count,failure_count,local_or_network,measurement,p25_ms,p75_ms,min_ms,mean_ms,round_trips,client_compute_median_ms,server_compute_median_ms,tcp_connect_median_ms,connect_to_first_authenticated_reply_median_ms
-1,B,PQC,ML-KEM-768,ML-DSA-65,100,1.487,0.649,2.676,4689,4593,9282,100,0,local (in-process),inproc,1.218,1.867,0.909,1.665,1,0.734,0.675,,
-2,B,PQC,ML-KEM-768,ML-DSA-65,100,1.55,0.806,3.53,4689,4593,9282,100,0,local (TCP loopback 127.0.0.1),loopback,1.252,2.058,0.94,1.768,1,,,0.152,1.98
-3,B,classical-baseline,X25519,Ed25519,100,0.415,0.013,0.435,286,286,572,100,0,local (in-process),inproc,0.411,0.424,0.408,0.419,1,0.206,0.208,,
-4,B,classical-baseline,X25519,Ed25519,100,0.475,0.076,0.744,286,286,572,100,0,local (TCP loopback 127.0.0.1),loopback,0.434,0.511,0.408,0.516,1,,,0.112,0.845
-5,B,hybrid-extension,X25519+ML-KEM-768,ML-DSA-65,100,1.603,0.624,2.614,4728,4632,9360,100,0,local (in-process),inproc,1.336,1.961,0.97,1.712,1,0.876,0.646,,
-6,B,hybrid-extension,X25519+ML-KEM-768,ML-DSA-65,100,1.741,0.67,2.932,4728,4632,9360,100,0,local (TCP loopback 127.0.0.1),loopback,1.425,2.095,1.009,1.868,1,,,0.149,2.186
+1,B,PQC,ML-KEM-768,ML-DSA-65,100,1.577,0.743,2.497,4689,4593,9282,100,0,local (in-process),inproc,1.179,1.922,0.857,1.624,1,0.708,0.687,,
+2,B,PQC,ML-KEM-768,ML-DSA-65,100,1.645,0.693,2.707,4689,4593,9282,100,0,local (TCP loopback 127.0.0.1),loopback,1.261,1.954,0.878,1.692,1,,,0.156,2.1
+3,B,classical-baseline,X25519,Ed25519,100,0.414,0.013,0.435,286,286,572,100,0,local (in-process),inproc,0.411,0.425,0.409,0.419,1,0.207,0.207,,
+4,B,classical-baseline,X25519,Ed25519,100,0.492,0.022,0.53,286,286,572,100,0,local (TCP loopback 127.0.0.1),loopback,0.486,0.508,0.456,0.498,1,,,0.149,0.904
+5,B,hybrid-extension,X25519+ML-KEM-768,ML-DSA-65,100,1.468,0.633,2.692,4728,4632,9360,100,0,local (in-process),inproc,1.244,1.877,0.97,1.624,1,0.742,0.649,,
+6,B,hybrid-extension,X25519+ML-KEM-768,ML-DSA-65,100,1.743,0.793,3.268,4728,4632,9360,100,0,local (TCP loopback 127.0.0.1),loopback,1.346,2.138,1.027,1.815,1,,,0.152,2.193
