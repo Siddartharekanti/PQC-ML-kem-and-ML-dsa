@@ -1,0 +1,8 @@
+# QFF 2026 Phase 2 - PS-P1 environment (Python 3.10 - 3.13). Install: python -m pip install -r requirements.txt
+# Crypto libraries pinned exactly to the organizer reference environment.
+cryptography==50.0.2   # ML-KEM-768 (FIPS 203), ML-DSA-65 (FIPS 204), X25519, Ed25519, HKDF-SHA256, AES-256-GCM, HMAC
+pqcrypto==1.0.0        # only used by the kit's env_check.py (SLH-DSA / interop self-test); not used by the protocol
+psutil==7.2.2          # Platform A record + Platform B runner (common/)
+matplotlib==3.11.2     # figures (scripts/make_figures.py only - never imported by the benchmark processes)
+pytest==9.1.1          # optional: python -m pytest
+# Versions above are the ones used to produce results/. Older matplotlib/psutil/pytest also work.

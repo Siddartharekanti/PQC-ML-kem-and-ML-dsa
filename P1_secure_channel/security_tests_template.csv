@@ -1,0 +1,10 @@
+test_id,description,injected_fault,expected,observed,result,run_command
+T1,Honest run,none,handshake ok + payloads decrypt byte-exact,,PASS/FAIL,
+T2,Handshake tampering,bit flip in KEM ciphertext,abort,,PASS/FAIL,
+T3,Signature tampering,bit flip in ML-DSA signature,reject,,PASS/FAIL,
+T4,Ciphertext tampering,bit flip in record ciphertext,InvalidTag,,PASS/FAIL,
+T5,Tag/AAD tampering,modified tag or header,InvalidTag,,PASS/FAIL,
+T6,Untrusted identity,attacker key not matching trust anchor,reject,,PASS/FAIL,
+T7,Identity swap,replayed signature in session naming other peer,reject,,PASS/FAIL,
+T8,Replay,resent record / old handshake,reject or documented limitation,,PASS/FAIL/SCOPED-OUT,
+T9,Algorithm downgrade,changed algorithm IDs,reject,,PASS/FAIL,

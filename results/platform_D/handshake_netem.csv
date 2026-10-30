@@ -1,0 +1,9 @@
+platform,profile,rtt_ms,bandwidth_mbps,rationale,mode,kem,signature,trials,median_handshake_ms,iqr_ms,p95_ms,model_handshake_ms,median_connect_to_confirmed_ms,total_handshake_bytes,success_count,failure_count,local_or_network
+D,lan,1,100,office LAN / data-centre,PQC,ML-KEM-768,ML-DSA-65,15,4.21,0.7,4.77,2.93,6.38,9282,15,0,emulated network (loopback + netem relay)
+D,lan,1,100,office LAN / data-centre,classical-baseline,X25519,Ed25519,15,2.18,0.17,2.35,1.45,4.0,572,15,0,emulated network (loopback + netem relay)
+D,mobile,50,10,4G/LTE mobile broadband,PQC,ML-KEM-768,ML-DSA-65,15,68.54,3.93,75.02,56.2,131.79,9282,15,0,emulated network (loopback + netem relay)
+D,mobile,50,10,4G/LTE mobile broadband,classical-baseline,X25519,Ed25519,15,59.39,3.82,63.36,50.78,119.21,572,15,0,emulated network (loopback + netem relay)
+D,constrained,100,1,congested Wi-Fi / rural link / satellite backhaul share,PQC,ML-KEM-768,ML-DSA-65,15,163.51,6.94,169.77,148.86,302.11,9282,15,0,emulated network (loopback + netem relay)
+D,constrained,100,1,congested Wi-Fi / rural link / satellite backhaul share,classical-baseline,X25519,Ed25519,15,112.37,2.91,117.76,104.1,222.46,572,15,0,emulated network (loopback + netem relay)
+D,narrowband,300,0.1,IoT / LPWAN-class or HF-radio link (100 kbit/s),PQC,ML-KEM-768,ML-DSA-65,15,790.61,5.58,794.83,775.46,1376.0,9282,15,0,emulated network (loopback + netem relay)
+D,narrowband,300,0.1,IoT / LPWAN-class or HF-radio link (100 kbit/s),classical-baseline,X25519,Ed25519,15,346.83,2.69,350.47,337.22,671.07,572,15,0,emulated network (loopback + netem relay)

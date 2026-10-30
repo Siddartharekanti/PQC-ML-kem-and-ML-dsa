@@ -1,0 +1,10 @@
+# private identity keys created by `python scripts/channel.py provision` - NEVER commit
+keys/
+# official payloads are regenerated deterministically by P1_secure_channel/gen_payloads.py (10 MB binary)
+P1_secure_channel/payloads/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.venv
+.DS_Store

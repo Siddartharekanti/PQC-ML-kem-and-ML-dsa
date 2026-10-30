@@ -1,0 +1,4 @@
+platform,mode,payload,plaintext_bytes,ciphertext_bytes,overhead_bytes,trials,median_encrypt_ms,median_decrypt_ms,sha256_match
+A,PQC,payload_1KB.bin,1024,,,,,,
+A,PQC,payload_100KB.bin,102400,,,,,,
+A,PQC,payload_10MB.bin,10485760,,,,,,
